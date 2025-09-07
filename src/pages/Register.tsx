@@ -48,7 +48,7 @@ const Register: React.FC = () => {
                             <div className="text-center mb-4">
                                 <h2 className="text-primary">
                                     <i className="bi bi-person-plus me-2"></i>
-                                    Join MarketPlace Pro
+                                    Join Shop Vista
                                 </h2>
                                 <p className="text-muted">Create your account and discover amazing products!</p>
                             </div>

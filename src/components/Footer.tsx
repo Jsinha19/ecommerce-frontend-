@@ -1,114 +1,123 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-dark text-light py-5 mt-5">
+        <footer className="bg-primary text-light py-3 mt-5">
             <Container>
                 <Row>
-                    <Col lg={3} md={6} className="mb-4">
-                        <h5 className="text-warning mb-3">ABOUT</h5>
+                    <Col lg={4} md={6} className="mb-3">
+                        <div className="mb-2">
+                            <h5 className="text-light mb-2">
+                                <i className="bi bi-shop me-2"></i>
+                                Shop Vista
+                            </h5>
+                            <p className="text-light-50 small mb-2">
+                                Your trusted online marketplace for quality products at great prices.
+                            </p>
+                        </div>
+                        <div className="social-links">
+                            <a href="#" className="text-light me-3">
+                                <i className="bi bi-facebook"></i>
+                            </a>
+                            <a href="#" className="text-light me-3">
+                                <i className="bi bi-instagram"></i>
+                            </a>
+                            <a href="#" className="text-light me-3">
+                                <i className="bi bi-twitter"></i>
+                            </a>
+                            <a href="#" className="text-light me-3">
+                                <i className="bi bi-youtube"></i>
+                            </a>
+                        </div>
+                    </Col>
+
+                    <Col lg={2} md={6} className="mb-3">
+                        <h6 className="text-warning mb-2">SHOP</h6>
                         <ul className="list-unstyled">
-                            <li><a href="#" className="text-light text-decoration-none">Contact Us</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Careers</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">About ShopVista</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Press</a></li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Electronics</a>
+                            </li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Clothing</a>
+                            </li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Books</a>
+                            </li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Home & Garden</a>
+                            </li>
                         </ul>
                     </Col>
 
-                    <Col lg={3} md={6} className="mb-4">
-                        <h5 className="text-warning mb-3">HELP</h5>
+                    <Col lg={2} md={6} className="mb-3">
+                        <h6 className="text-warning mb-2">HELP</h6>
                         <ul className="list-unstyled">
-                            <li><a href="#" className="text-light text-decoration-none">Payments</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Shipping</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Cancellation & Returns</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">FAQ</a></li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Customer Support</a>
+                            </li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Shipping Info</a>
+                            </li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">Returns</a>
+                            </li>
+                            <li className="mb-1">
+                                <a href="#" className="text-light text-decoration-none small">FAQ</a>
+                            </li>
                         </ul>
                     </Col>
 
-                    <Col lg={3} md={6} className="mb-4">
-                        <h5 className="text-warning mb-3">CONSUMER POLICY</h5>
-                        <ul className="list-unstyled">
-                            <li><a href="#" className="text-light text-decoration-none">Terms Of Use</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Privacy</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Sitemap</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Grievance Redressal</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">EPR Compliance</a></li>
-                        </ul>
-                    </Col>
-
-                    <Col lg={3} md={6} className="mb-4">
-                        <h5 className="text-warning mb-3">SOCIAL</h5>
-                        <ul className="list-unstyled">
-                            <li><a href="#" className="text-light text-decoration-none">Facebook</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Instagram</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">Twitter</a></li>
-                            <li><a href="#" className="text-light text-decoration-none">YouTube</a></li>
-                        </ul>
+                    <Col lg={4} md={6} className="mb-3">
+                        <h6 className="text-warning mb-2">CONTACT</h6>
+                        <p className="small text-light-50 mb-1">
+                            <i className="bi bi-telephone me-2"></i>
+                            +1 (555) 123-4567
+                        </p>
+                        <p className="small text-light-50 mb-2">
+                            <i className="bi bi-envelope me-2"></i>
+                            support@shopvista.com
+                        </p>
+                        <div className="newsletter-form">
+                            <div className="input-group input-group-sm">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="Subscribe to newsletter"
+                                />
+                                <Button variant="warning" size="sm">
+                                    Subscribe
+                                </Button>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
 
-                <hr className="my-4" />
+                <hr className="my-3 border-light-50" />
 
-                <Row>
-                    <Col lg={6} className="mb-4">
-                        <h6 className="text-warning">Mail Us:</h6>
-                        <p className="small text-muted">
-                            ShopVista Internet Private Limited,<br />
-                            Buildings Alyssa, Begonia &<br />
-                            Clove Embassy Tech Village,<br />
-                            Outer Ring Road, Devarabeesanahalli Village,<br />
-                            Bengaluru, 560103,<br />
-                            Karnataka, India
-                        </p>
-                    </Col>
-
-                    <Col lg={6} className="mb-4">
-                        <h6 className="text-warning">Registered Office Address:</h6>
-                        <p className="small text-muted">
-                            ShopVista Internet Private Limited,<br />
-                            Buildings Alyssa, Begonia &<br />
-                            Clove Embassy Tech Village,<br />
-                            Outer Ring Road, Devarabeesanahalli Village,<br />
-                            Bengaluru, 560103,<br />
-                            Karnataka, India<br />
-                            CIN : U51109KA2012PTC066107<br />
-                            Telephone: <a href="tel:044-45614700" className="text-primary">044-45614700</a>
-                        </p>
-                    </Col>
-                </Row>
-
-                <hr className="my-4" />
-
+                {/* Bottom Section */}
                 <Row className="align-items-center">
-                    <Col md={4} className="mb-3">
+                    <Col md={6} className="mb-2">
                         <div className="d-flex align-items-center">
-                            <i className="bi bi-shop text-warning me-2 fs-4"></i>
-                            <span className="text-warning">Become a Seller</span>
+                            <span className="text-light small me-3">We Accept:</span>
+                            <i className="bi bi-credit-card text-warning me-2"></i>
+                            <i className="bi bi-paypal text-warning me-2"></i>
+                            <i className="bi bi-wallet text-warning me-2"></i>
+                            <i className="bi bi-shield-check text-warning ms-3 me-1"></i>
+                            <span className="text-light small">Secure</span>
                         </div>
                     </Col>
-
-                    <Col md={4} className="mb-3 text-center">
-                        <div className="d-flex align-items-center justify-content-center">
-                            <i className="bi bi-question-circle text-warning me-2 fs-4"></i>
-                            <span className="text-warning">Help Center</span>
+                    <Col md={6} className="text-md-end">
+                        <p className="small text-light-50 mb-1">
+                            © 2025 Shop Vista. All rights reserved.
+                        </p>
+                        <div className="legal-links">
+                            <a href="#" className="text-light-50 text-decoration-none small me-3">Privacy</a>
+                            <a href="#" className="text-light-50 text-decoration-none small me-3">Terms</a>
+                            <a href="#" className="text-light-50 text-decoration-none small">About</a>
                         </div>
-                    </Col>
-
-                    <Col md={4} className="mb-3 text-end">
-                        <p className="small text-muted mb-0">© 2020-2025 ShopVista.com</p>
                     </Col>
                 </Row>
-
-                <div className="text-center mt-4">
-                    <div className="payment-methods">
-                        <span className="text-muted small me-3">We Accept:</span>
-                        <i className="bi bi-credit-card text-warning me-2"></i>
-                        <i className="bi bi-paypal text-warning me-2"></i>
-                        <i className="bi bi-wallet text-warning me-2"></i>
-                        <span className="text-muted small ms-3">Secure Payments</span>
-                    </div>
-                </div>
             </Container>
         </footer>
     );

@@ -35,7 +35,7 @@ const Login: React.FC = () => {
                             <div className="text-center mb-4">
                                 <h2 className="text-primary">
                                     <i className="bi bi-person-circle me-2"></i>
-                                    Welcome to MarketPlace Pro
+                                    Welcome to Shop Vista
                                 </h2>
                                 <p className="text-muted">Sign in to your account and start shopping!</p>
                             </div>

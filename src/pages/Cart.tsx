@@ -230,7 +230,7 @@ const Cart: React.FC = () => {
 
                             {/* Order Summary */}
                             <Col lg={4}>
-                                <Card className="sticky-top" style={{ top: '100px' }}>
+                                <Card className="position-sticky" style={{ top: '120px', zIndex: 0 }}>
                                     <Card.Header>
                                         <h5 className="mb-0">
                                             <i className="bi bi-receipt me-2"></i>

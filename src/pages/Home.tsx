@@ -3,6 +3,19 @@
 import type React from "react"
 import { useState, useEffect, useCallback, useRef } from "react"
 import { Container, Row, Col, Spinner, Alert, Pagination, Button, Carousel, Card } from "react-bootstrap"
+import {
+  ArrowRight,
+  RotateCcw,
+  Award,
+  Truck,
+  Zap,
+  Star,
+  Clock,
+  Gift,
+  Grid3X3,
+  LucideTriangle as ExclamationTriangle,
+  Search,
+} from "lucide-react"
 import type { Item, FilterParams, ItemsResponse } from "../types"
 import { itemsAPI } from "../services/api"
 import ProductCard from "../components/ProductCard"
@@ -125,7 +138,7 @@ const Home: React.FC = () => {
               <p className="lead mb-4 text-white fs-4">{slide.description}</p>
               <Button
                 size="lg"
-                className="px-5 py-3 fw-bold fs-5"
+                className="px-5 py-3 fw-bold fs-5 d-inline-flex align-items-center"
                 style={{
                   background: "linear-gradient(45deg, #ffd700, #ffed4e)",
                   border: "none",
@@ -135,7 +148,7 @@ const Home: React.FC = () => {
                 }}
                 onClick={scrollToFeaturedProducts}
               >
-                {slide.buttonText} <i className="bi bi-arrow-right ms-2"></i>
+                {slide.buttonText} <ArrowRight className="ms-2" size={20} />
               </Button>
             </Col>
           </Row>
@@ -190,7 +203,7 @@ const Home: React.FC = () => {
             <Col md={4} className="mb-3 mb-md-0">
               <div className="d-flex align-items-center justify-content-center">
                 <div className="me-3">
-                  <i className="bi bi-arrow-repeat" style={{ fontSize: "2rem", color: "#ffd700" }}></i>
+                  <RotateCcw size={32} color="#ffd700" />
                 </div>
                 <div className="text-start">
                   <h6 className="mb-0 fw-bold">Easy Returns</h6>
@@ -201,7 +214,7 @@ const Home: React.FC = () => {
             <Col md={4} className="mb-3 mb-md-0">
               <div className="d-flex align-items-center justify-content-center">
                 <div className="me-3">
-                  <i className="bi bi-award" style={{ fontSize: "2rem", color: "#ffd700" }}></i>
+                  <Award size={32} color="#ffd700" />
                 </div>
                 <div className="text-start">
                   <h6 className="mb-0 fw-bold">Top Rated Products</h6>
@@ -212,7 +225,7 @@ const Home: React.FC = () => {
             <Col md={4}>
               <div className="d-flex align-items-center justify-content-center">
                 <div className="me-3">
-                  <i className="bi bi-truck" style={{ fontSize: "2rem", color: "#ffd700" }}></i>
+                  <Truck size={32} color="#ffd700" />
                 </div>
                 <div className="text-start">
                   <h6 className="mb-0 fw-bold">Cash on Delivery</h6>
@@ -227,78 +240,204 @@ const Home: React.FC = () => {
       <Container className="py-5">
         <Row className="mb-4">
           <Col>
-            <h2 className="text-center fw-bold mb-3">Shop by Category</h2>
-            <p className="text-center text-muted">Discover our wide range of home essentials</p>
+            <h2 className="text-center fw-bold mb-3">
+              <span className="text-primary">Shop by Category</span>
+              <span className="badge bg-danger ms-3 fs-6 pulse-animation">MEGA SALE ON!</span>
+            </h2>
+            <p className="text-center text-muted">Discover our wide range of home essentials with unbeatable offers</p>
           </Col>
         </Row>
         <Row className="g-4 mb-5">
           <Col md={3} sm={6}>
             <Card
-              className="h-100 border-0 shadow-sm category-card"
-              style={{ cursor: "pointer" }}
+              className="h-100 border-0 shadow-lg category-card position-relative overflow-hidden"
+              style={{ cursor: "pointer", transform: "scale(1)", transition: "all 0.3s ease" }}
               onClick={scrollToFeaturedProducts}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)"
+                e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)"
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.1)"
+              }}
             >
+              <div className="position-absolute top-0 start-0 z-3">
+                <span className="badge bg-danger px-3 py-2 rounded-0 rounded-end fw-bold d-flex align-items-center">
+                  <Zap size={16} className="me-1" />
+                  MAHA DEAL
+                </span>
+              </div>
+              <div className="position-absolute top-0 end-0 z-3">
+                <span className="badge bg-warning text-dark px-2 py-1 rounded-0 rounded-start fw-bold">
+                  UP TO 70% OFF
+                </span>
+              </div>
               <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
                 <Card.Img variant="top" src="/beautiful-curtains-and-drapes.jpg" className="h-100 object-fit-cover" />
                 <div
                   className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end p-3"
-                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.7))" }}
+                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.8))" }}
                 >
-                  <h5 className="text-white fw-bold mb-0">Curtains</h5>
+                  <div className="w-100">
+                    <h5 className="text-white fw-bold mb-1">Curtains</h5>
+                    <small className="text-warning fw-bold">Starting ₹95 | Free Shipping</small>
+                  </div>
                 </div>
+              </div>
+              <div className="position-absolute bottom-0 start-0 w-100 bg-primary text-white text-center py-2">
+                <small className="fw-bold d-flex align-items-center justify-content-center">
+                  <Clock size={14} className="me-1" /> Limited Time Offer!
+                </small>
               </div>
             </Card>
           </Col>
           <Col md={3} sm={6}>
             <Card
-              className="h-100 border-0 shadow-sm category-card"
-              style={{ cursor: "pointer" }}
+              className="h-100 border-0 shadow-lg category-card position-relative overflow-hidden"
+              style={{ cursor: "pointer", transform: "scale(1)", transition: "all 0.3s ease" }}
               onClick={scrollToFeaturedProducts}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)"
+                e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)"
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.1)"
+              }}
             >
+              <div className="position-absolute top-0 start-0 z-3">
+                <span className="badge bg-success px-3 py-2 rounded-0 rounded-end fw-bold d-flex align-items-center">
+                  <Star size={16} className="me-1" />
+                  BEST SELLER
+                </span>
+              </div>
+              <div className="position-absolute top-0 end-0 z-3">
+                <span className="badge bg-info text-dark px-2 py-1 rounded-0 rounded-start fw-bold">BUY 1 GET 1</span>
+              </div>
               <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
                 <Card.Img variant="top" src="/modern-furniture-sofa-chair.jpg" className="h-100 object-fit-cover" />
                 <div
                   className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end p-3"
-                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.7))" }}
+                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.8))" }}
                 >
-                  <h5 className="text-white fw-bold mb-0">Furniture</h5>
+                  <div className="w-100">
+                    <h5 className="text-white fw-bold mb-1">Furniture</h5>
+                    <small className="text-info fw-bold">Premium Quality | EMI Available</small>
+                  </div>
                 </div>
+              </div>
+              <div className="position-absolute bottom-0 start-0 w-100 bg-success text-white text-center py-2">
+                <small className="fw-bold">🔥 Trending Now!</small>
               </div>
             </Card>
           </Col>
           <Col md={3} sm={6}>
             <Card
-              className="h-100 border-0 shadow-sm category-card"
-              style={{ cursor: "pointer" }}
+              className="h-100 border-0 shadow-lg category-card position-relative overflow-hidden"
+              style={{ cursor: "pointer", transform: "scale(1)", transition: "all 0.3s ease" }}
               onClick={scrollToFeaturedProducts}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)"
+                e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)"
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.1)"
+              }}
             >
+              <div className="position-absolute top-0 start-0 z-3">
+                <span className="badge bg-warning text-dark px-3 py-2 rounded-0 rounded-end fw-bold d-flex align-items-center">
+                  <Clock size={16} className="me-1" />
+                  FLASH SALE
+                </span>
+              </div>
+              <div className="position-absolute top-0 end-0 z-3">
+                <span className="badge bg-danger px-2 py-1 rounded-0 rounded-start fw-bold">SAVE 60%</span>
+              </div>
               <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
                 <Card.Img variant="top" src="/home-decor-accessories-vases.jpg" className="h-100 object-fit-cover" />
                 <div
                   className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end p-3"
-                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.7))" }}
+                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.8))" }}
                 >
-                  <h5 className="text-white fw-bold mb-0">Decor</h5>
+                  <div className="w-100">
+                    <h5 className="text-white fw-bold mb-1">Decor</h5>
+                    <small className="text-warning fw-bold">Designer Collection | Express Delivery</small>
+                  </div>
                 </div>
+              </div>
+              <div className="position-absolute bottom-0 start-0 w-100 bg-warning text-dark text-center py-2">
+                <small className="fw-bold">⚡ Ends in 2 Hours!</small>
               </div>
             </Card>
           </Col>
           <Col md={3} sm={6}>
             <Card
-              className="h-100 border-0 shadow-sm category-card"
-              style={{ cursor: "pointer" }}
+              className="h-100 border-0 shadow-lg category-card position-relative overflow-hidden"
+              style={{ cursor: "pointer", transform: "scale(1)", transition: "all 0.3s ease" }}
               onClick={scrollToFeaturedProducts}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)"
+                e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)"
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.1)"
+              }}
             >
+              <div className="position-absolute top-0 start-0 z-3">
+                <span className="badge bg-info px-3 py-2 rounded-0 rounded-end fw-bold d-flex align-items-center">
+                  <Gift size={16} className="me-1" />
+                  NEW ARRIVAL
+                </span>
+              </div>
+              <div className="position-absolute top-0 end-0 z-3">
+                <span className="badge bg-success px-2 py-1 rounded-0 rounded-start fw-bold">FLAT 50% OFF</span>
+              </div>
               <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
                 <Card.Img variant="top" src="/categories/kitchen.png" className="h-100 object-fit-cover" />
                 <div
                   className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end p-3"
-                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.7))" }}
+                  style={{ background: "linear-gradient(transparent, rgba(0,0,0,0.8))" }}
                 >
-                  <h5 className="text-white fw-bold mb-0">Kitchen</h5>
+                  <div className="w-100">
+                    <h5 className="text-white fw-bold mb-1">Kitchen</h5>
+                    <small className="text-success fw-bold">Smart Appliances | 2 Year Warranty</small>
+                  </div>
                 </div>
               </div>
+              <div className="position-absolute bottom-0 start-0 w-100 bg-info text-white text-center py-2">
+                <small className="fw-bold">🎁 Free Gift Inside!</small>
+              </div>
             </Card>
+          </Col>
+        </Row>
+
+        <Row className="mb-4">
+          <Col>
+            <div
+              className="bg-gradient p-4 rounded-3 text-center text-white position-relative overflow-hidden"
+              style={{ background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" }}
+            >
+              <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10">
+                <div className="d-flex justify-content-around align-items-center h-100">
+                  <Zap size={64} />
+                  <Star size={64} />
+                  <Gift size={64} />
+                  <Award size={64} />
+                </div>
+              </div>
+              <div className="position-relative">
+                <h3 className="fw-bold mb-2 text-black">🎉 SUPER SAVER COMBO DEALS 🎉</h3>
+                <p className="mb-3 text-black">Mix & Match any 3 items from different categories and get additional 25% OFF!</p>
+                <div className="d-flex justify-content-center gap-3 flex-wrap">
+                  <span className="badge bg-warning text-dark px-3 py-2 fs-6">Code: COMBO25</span>
+                  <span className="badge bg-success px-3 py-2 fs-6">Free Shipping Above ₹999</span>
+                  <span className="badge bg-info px-3 py-2 fs-6">Easy Returns</span>
+                </div>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
@@ -309,7 +448,7 @@ const Home: React.FC = () => {
             {/* Mobile Filter Toggle */}
             <Col xs={12} className="d-lg-none mb-3">
               <Button variant="outline-primary" onClick={() => setShowFilters(!showFilters)} className="w-100">
-                <i className="bi bi-funnel me-2"></i>
+                <Grid3X3 size={16} className="me-2" />
                 {showFilters ? "Hide Filters" : "Show Filters"}
               </Button>
             </Col>
@@ -328,8 +467,8 @@ const Home: React.FC = () => {
               {/* Results Header */}
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                  <h3 className="mb-1 fw-bold">
-                    <i className="bi bi-grid me-2 text-primary"></i>
+                  <h3 className="mb-1 fw-bold d-flex align-items-center">
+                    <Grid3X3 size={24} className="me-2 text-primary" />
                     Featured Products
                   </h3>
                   {!loading && (
@@ -351,8 +490,8 @@ const Home: React.FC = () => {
 
               {/* Error State */}
               {error && (
-                <Alert variant="danger" className="text-center">
-                  <i className="bi bi-exclamation-triangle me-2"></i>
+                <Alert variant="danger" className="text-center d-flex align-items-center justify-content-center">
+                  <ExclamationTriangle size={20} className="me-2" />
                   {error}
                 </Alert>
               )}
@@ -360,7 +499,7 @@ const Home: React.FC = () => {
               {/* No Products */}
               {!loading && !error && items.length === 0 && (
                 <div className="text-center py-5">
-                  <i className="bi bi-search display-1 text-muted"></i>
+                  <Search size={64} className="text-muted mb-3" />
                   <h4 className="mt-3">No products found</h4>
                   <p className="text-muted">Try adjusting your filters or search terms.</p>
                   <Button variant="primary" onClick={handleClearFilters}>

@@ -10,23 +10,35 @@ const Navigation: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <Navbar bg="success" variant="dark" expand="lg" sticky="top" className="shadow-sm">
+        <Navbar bg="primary" variant="dark" expand="lg" sticky="top" className="shadow-sm">
             <Container>
                 <Navbar.Brand
                     onClick={() => navigate('/')}
                     style={{ cursor: 'pointer' }}
                 >
-                    <i className="bi bi-shop me-2"></i>
-                    MarketPlace Pro
+                    <img
+                        src="/icon.png"
+                        alt="Shop Vista"
+                        height="40"
+                        className="me-2"
+                        style={{
+                            objectFit: 'contain',
+                            backgroundColor: 'white',
+                            padding: '4px',
+                            borderRadius: '6px',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                        }}
+                    />
+                    Shop Vista
                 </Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    {/* <Nav className="me-auto">
                         <Nav.Link onClick={() => navigate('/')}>
                             Home
                         </Nav.Link>
-                    </Nav>
+                    </Nav> */}
 
                     <Nav className="ms-auto">
                         {isAuthenticated ? (

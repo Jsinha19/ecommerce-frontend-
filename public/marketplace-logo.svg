@@ -1,0 +1,41 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#0d6efd" rx="64"/>
+  
+  <!-- Shopping Cart -->
+  <g transform="translate(256,256)">
+    <!-- Cart Body -->
+    <rect x="-80" y="-40" width="120" height="80" fill="none" stroke="#ffffff" stroke-width="12" rx="8"/>
+    
+    <!-- Cart Handle -->
+    <path d="M -80 -40 L -100 -40 L -120 -80 L -140 -80" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+    
+    <!-- Cart Wheels -->
+    <circle cx="-50" cy="60" r="12" fill="#ffffff"/>
+    <circle cx="10" cy="60" r="12" fill="#ffffff"/>
+    
+    <!-- Shopping Items in Cart -->
+    <rect x="-60" y="-20" width="25" height="25" fill="#ffc107" rx="4"/>
+    <rect x="-25" y="-30" width="20" height="35" fill="#28a745" rx="4"/>
+    <rect x="10" y="-15" width="15" height="20" fill="#dc3545" rx="4"/>
+    
+    <!-- Market Building -->
+    <g transform="translate(60, -60)">
+      <!-- Building Base -->
+      <rect x="-40" y="0" width="80" height="80" fill="#ffffff" rx="4"/>
+      
+      <!-- Building Roof -->
+      <polygon points="-50,-10 0,-30 50,-10 40,0 -40,0" fill="#ffc107"/>
+      
+      <!-- Windows -->
+      <rect x="-25" y="15" width="15" height="15" fill="#0d6efd" rx="2"/>
+      <rect x="10" y="15" width="15" height="15" fill="#0d6efd" rx="2"/>
+      
+      <!-- Door -->
+      <rect x="-10" y="40" width="20" height="40" fill="#dc3545" rx="2"/>
+      <circle cx="5" cy="55" r="2" fill="#ffffff"/>
+    </g>
+  </g>
+  
+  <!-- Text (optional, can be removed for cleaner icon) -->
+  <text x="256" y="450" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="36" font-weight="bold">MP</text>
+</svg>

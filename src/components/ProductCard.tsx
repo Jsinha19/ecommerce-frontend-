@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Badge, Spinner, Toast, ToastContainer, Alert } from 'react-bootstrap';
+import { Card, Button, Badge, Spinner, Toast, ToastContainer, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Item } from '../types';
 import { useCart } from '../contexts/CartContext';
@@ -17,25 +17,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
     const [toastVariant, setToastVariant] = useState('success');
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleAddToCart = async () => {
         if (!isAuthenticated) {
-            setToastMessage('🔐 Please login to add items to cart');
-            setToastVariant('warning');
-            setShowToast(true);
-            // Redirect to login after a short delay
-            setTimeout(() => {
-                navigate('/login');
-            }, 2000);
+            setShowLoginModal(true);
             return;
         }
 
         try {
             setAdding(true);
             await addToCart(item._id);
-            setToastMessage('✅ Item added to cart successfully!');
-            setToastVariant('success');
-            setShowToast(true);
+            setShowSuccessModal(true);
         } catch (error) {
             setToastMessage('❌ Failed to add item to cart');
             setToastVariant('danger');
@@ -43,6 +37,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
         } finally {
             setAdding(false);
         }
+    };
+
+    const handleLoginRedirect = () => {
+        setShowLoginModal(false);
+        navigate('/login');
+    };
+
+    const handleViewCart = () => {
+        setShowSuccessModal(false);
+        navigate('/cart');
+    };
+
+    const handleContinueShopping = () => {
+        setShowSuccessModal(false);
     };
 
     const getCategoryBadgeColor = (category: string) => {
@@ -121,6 +129,64 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
                 </Card.Body>
             </Card>
 
+            {/* Login Required Modal */}
+            <Modal show={showLoginModal} onHide={() => setShowLoginModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        <i className="bi bi-lock me-2 text-warning"></i>
+                        Login Required
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">
+                    <div className="mb-3">
+                        <i className="bi bi-person-circle display-1 text-primary"></i>
+                    </div>
+                    <h5>Please login to add items to your cart</h5>
+                    <p className="text-muted">
+                        You need to be logged in to start shopping and add items to your cart.
+                    </p>
+                </Modal.Body>
+                <Modal.Footer className="justify-content-center">
+                    <Button variant="secondary" onClick={() => setShowLoginModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleLoginRedirect}>
+                        <i className="bi bi-box-arrow-in-right me-2"></i>
+                        Go to Login
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* Success Modal */}
+            <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        <i className="bi bi-check-circle me-2 text-success"></i>
+                        Item Added Successfully!
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">
+                    <div className="mb-3">
+                        <i className="bi bi-cart-check display-1 text-success"></i>
+                    </div>
+                    <h5>"{item.name}" has been added to your cart</h5>
+                    <p className="text-muted">
+                        What would you like to do next?
+                    </p>
+                </Modal.Body>
+                <Modal.Footer className="justify-content-center">
+                    <Button variant="outline-primary" onClick={handleContinueShopping}>
+                        <i className="bi bi-arrow-left me-2"></i>
+                        Continue Shopping
+                    </Button>
+                    <Button variant="primary" onClick={handleViewCart}>
+                        <i className="bi bi-cart me-2"></i>
+                        View Cart
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* Error Toast */}
             <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1055 }}>
                 <Toast
                     show={showToast}
@@ -130,18 +196,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
                     bg={toastVariant}
                 >
                     <Toast.Header>
-                        <strong className="me-auto">
-                            {toastVariant === 'warning' ? 'Login Required' :
-                                toastVariant === 'success' ? 'Success' : 'Error'}
-                        </strong>
+                        <strong className="me-auto">Error</strong>
                     </Toast.Header>
                     <Toast.Body className="text-white">
                         {toastMessage}
-                        {toastVariant === 'warning' && (
-                            <div className="mt-2">
-                                <small>Redirecting to login page...</small>
-                            </div>
-                        )}
                     </Toast.Body>
                 </Toast>
             </ToastContainer>
