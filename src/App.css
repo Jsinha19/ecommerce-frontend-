@@ -1,38 +1,176 @@
+/* Custom styles for better responsiveness and aesthetics */
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Ensure sticky navigation works properly */
+body {
+  padding-top: 76px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Custom card hover effects */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Product card image consistency */
+.card-img-top {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Custom button styles */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  body {
+    padding-top: 66px;
+  }
+
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+/* Loading spinner styles */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Custom badge styles */
+.badge {
+  font-size: 0.75em;
+  font-weight: 500;
+}
+
+/* Star rating styles */
+.bi-star-fill {
+  color: #ffc107;
+}
+
+.bi-star {
+  color: #dee2e6;
+}
+
+/* Cart item styles */
+.cart-item-quantity {
+  max-width: 70px;
+}
+
+/* Sticky elements */
+.sticky-top {
+  z-index: 1020;
+}
+
+/* Custom alert styles */
+.alert {
+  border: none;
+  border-radius: 8px;
+}
+
+/* Form improvements */
+.form-control,
+.form-select {
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Pagination improvements */
+.pagination {
+  margin-bottom: 0;
+}
+
+.page-link {
+  border-radius: 6px;
+  margin: 0 2px;
+  border: 1px solid #dee2e6;
+}
+
+/* Toast improvements */
+.toast {
+  border-radius: 8px;
+}
+
+/* Custom navbar styles */
+.navbar-brand {
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Responsive grid improvements */
+.row.g-4>* {
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .row.g-4>* {
+    margin-bottom: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
